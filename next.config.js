@@ -1,13 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// Optimize for Nigerian bandwidth
-	images: {
-		formats: ["image/webp"],
-		deviceSizes: [640, 750, 828, 1080, 1200],
-		imageSizes: [16, 32, 48, 64, 96],
-	},
-	// Enable compression
-	compress: true,
+	output: "export",
 };
 
 module.exports = nextConfig;
