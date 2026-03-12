@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	reactStrictMode: true,
+	turbopack: {
+		root: __dirname,
+	},
 	// Optimize for Nigerian bandwidth
 	images: {
 		formats: ["image/webp"],
