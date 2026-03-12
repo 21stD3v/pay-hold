@@ -1,20 +1,17 @@
 import { cookies } from "next/headers";
 
-export const setAuthCookies = (access: string, refresh: string) => {
-	cookies().set("access_token", access, {
+export const setAuthCookies = async (access: string, refresh: string) => {
+	const cookieStore = await cookies();
+	cookieStore.set("access_token", access, {
 		httpOnly: true,
 		secure: true,
 		sameSite: "strict",
+		path: "/",
 	});
-
-	cookies().set("refresh_token", refresh, {
+	cookieStore.set("refresh_token", refresh, {
 		httpOnly: true,
 		secure: true,
 		sameSite: "strict",
+		path: "/",
 	});
-};
-
-export const clearAuthCookies = () => {
-	cookies().delete("access_token");
-	cookies().delete("refresh_token");
 };
