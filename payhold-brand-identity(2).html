@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayHold - Brand Identity Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0d4d7d 0%, #1a7a4a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #0d4d7d;
+            border-bottom: 3px solid #1a7a4a;
+            padding-bottom: 1rem;
+        }
+
+        .logo-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .logo-box {
+            padding: 3rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            border: 2px solid #e0e0e0;
+            position: relative;
+        }
+
+        .logo-box.dark {
+            background: #1a1a1a;
+        }
+
+        .logo-box.light {
+            background: #ffffff;
+        }
+
+        .logo-box.color {
+            background: linear-gradient(135deg, #0d4d7d 0%, #1a7a4a 100%);
+        }
+
+        .logo-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #666;
+            background: rgba(255,255,255,0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .logo-box.dark .logo-label {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .logo-box.color .logo-label {
+            background: rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        /* Main Logo */
+        .main-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+
+        .shield {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .shield-path {
+            fill: url(#shieldGradient);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .shield-inner {
+            fill: url(#innerGradient);
+        }
+
+        .dollar-symbol {
+            fill: white;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .hand-icon {
+            fill: white;
+            opacity: 0.9;
+        }
+
+        /* Logo Text Styling */
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo-text .pay {
+            color: #0d4d7d;
+        }
+
+        .logo-text .hold {
+            color: #1a7a4a;
+        }
+
+        .logo-text-white .pay,
+        .logo-text-white .hold {
+            color: white;
+        }
+
+        .logo-text-dark .pay,
+        .logo-text-dark .hold {
+            color: #1a1a1a;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .color-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .color-swatch {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .color-info {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .color-name {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .color-values {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .color-values div {
+            margin: 0.3rem 0;
+        }
+
+        /* Typography */
+        .type-example {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #0d4d7d;
+        }
+
+        .type-scale {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .type-item {
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .type-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Icon Grid */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .icon-display {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0d4d7d 0%, #1a7a4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .icon-name {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Usage Guidelines */
+        .do-dont-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .do-dont-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid;
+        }
+
+        .do-dont-card.do {
+            border-color: #1a7a4a;
+        }
+
+        .do-dont-card.dont {
+            border-color: #d32f2f;
+        }
+
+        .do-dont-header {
+            padding: 1rem;
+            color: white;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .do-dont-card.do .do-dont-header {
+            background: #1a7a4a;
+        }
+
+        .do-dont-card.dont .do-dont-header {
+            background: #d32f2f;
+        }
+
+        .do-dont-content {
+            padding: 2rem;
+            background: white;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tagline */
+        .tagline {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        /* Download Button */
+        .download-section {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #0d4d7d 0%, #1a7a4a 100%);
+            border-radius: 16px;
+            color: white;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #0d4d7d;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .main-logo {
+                font-size: 2rem;
+            }
+            
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>PayHold Brand Identity</h1>
+        <p>Secure Local Delivery with Payment Protection</p>
+    </div>
+
+    <div class="container">
+        <!-- Logo Variations -->
+        <div class="section">
+            <h2 class="section-title">Logo Variations</h2>
+            
+            <div class="logo-showcase">
+                <!-- Primary Logo -->
+                <div class="logo-box light">
+                    <div class="logo-label">Primary Logo</div>
+                    <div style="font-size: 5rem; font-weight: 700; letter-spacing: -3px;">
+                        <span style="color: #0d4d7d;">Pay</span><span style="color: #1a7a4a;">Hold</span>
+                    </div>
+                </div>
+
+                <!-- Logo on Dark -->
+                <div class="logo-box dark">
+                    <div class="logo-label">On Dark Background</div>
+                    <div style="font-size: 5rem; font-weight: 700; letter-spacing: -3px; color: white;">
+                        PayHold
+                    </div>
+                </div>
+
+                <!-- Logo on Brand Color -->
+                <div class="logo-box color">
+                    <div class="logo-label">On Brand Background</div>
+                    <div style="font-size: 5rem; font-weight: 700; letter-spacing: -3px; color: white;">
+                        PayHold
+                    </div>
+                </div>
+
+                <!-- Alternative: Blue on Green -->
+                <div class="logo-box light" style="background: #f0f8f4;">
+                    <div class="logo-label">Alternative Style</div>
+                    <div style="font-size: 5rem; font-weight: 700; letter-spacing: -3px;">
+                        <span style="color: #0d4d7d;">Pay</span><span style="color: #1a7a4a;">Hold</span>
+                    </div>
+                </div>
+
+                <!-- Monochrome Dark -->
+                <div class="logo-box light">
+                    <div class="logo-label">Monochrome</div>
+                    <div style="font-size: 5rem; font-weight: 700; letter-spacing: -3px; color: #1a1a1a;">
+                        PayHold
+                    </div>
+                </div>
+
+                <!-- Stacked Version -->
+                <div class="logo-box light">
+                    <div class="logo-label">Stacked Version</div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3.5rem; font-weight: 700; letter-spacing: -2px; line-height: 0.9;">
+                            <div style="color: #0d4d7d;">Pay</div>
+                            <div style="color: #1a7a4a;">Hold</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tagline">
+                <strong>Brand Tagline:</strong> "Secure Delivery. Protected Payment. Local Trust."
+            </div>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="section">
+            <h2 class="section-title">Color Palette</h2>
+            <p style="margin-bottom: 2rem; color: #666;">The PayHold color palette uses deeper, more trustworthy blues combined with vibrant greens to convey security, growth, and reliability.</p>
+            
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #0d4d7d;">
+                        Primary Blue
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Ocean Blue</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> #0d4d7d</div>
+                            <div><strong>RGB:</strong> 13, 77, 125</div>
+                            <div><strong>Usage:</strong> Primary brand color, main UI elements</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1a7a4a;">
+                        Primary Green
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Trust Green</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> #1a7a4a</div>
+                            <div><strong>RGB:</strong> 26, 122, 74</div>
+                            <div><strong>Usage:</strong> Secondary brand color, success states</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #0a3a5e;">
+                        Accent Dark Blue
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Midnight Blue</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> #0a3a5e</div>
+                            <div><strong>RGB:</strong> 10, 58, 94</div>
+                            <div><strong>Usage:</strong> Shadows, dark accents</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #2c9f5f;">
+                        Accent Light Green
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Fresh Green</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> #2c9f5f</div>
+                            <div><strong>RGB:</strong> 44, 159, 95</div>
+                            <div><strong>Usage:</strong> Highlights, CTAs, success messages</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #f8f9fa; color: #333;">
+                        Neutral Light
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Cloud Gray</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> #f8f9fa</div>
+                            <div><strong>RGB:</strong> 248, 249, 250</div>
+                            <div><strong>Usage:</strong> Backgrounds, cards</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1a1a1a;">
+                        Neutral Dark
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Carbon Black</div>
+                        <div class="color-values">
+                            <div><strong>HEX:</strong> #1a1a1a</div>
+                            <div><strong>RGB:</strong> 26, 26, 26</div>
+                            <div><strong>Usage:</strong> Text, headers, icons</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2 class="section-title">Typography</h2>
+            
+            <div class="type-example">
+                <div style="font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem;">Primary Font: Inter / Segoe UI</div>
+                <p>A modern, clean sans-serif typeface that ensures excellent readability across all platforms and sizes. Used for all digital applications.</p>
+            </div>
+
+            <div class="type-scale">
+                <div class="type-item">
+                    <div class="type-label">Heading 1 - Hero</div>
+                    <div style="font-size: 3rem; font-weight: 700; color: #0d4d7d;">Secure Your Payment</div>
+                </div>
+
+                <div class="type-item">
+                    <div class="type-label">Heading 2 - Section Title</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: #0d4d7d;">How It Works</div>
+                </div>
+
+                <div class="type-item">
+                    <div class="type-label">Heading 3 - Card Title</div>
+                    <div style="font-size: 1.5rem; font-weight: 600; color: #1a1a1a;">Payment Protection</div>
+                </div>
+
+                <div class="type-item">
+                    <div class="type-label">Body Text</div>
+                    <div style="font-size: 1rem; color: #666;">PayHold is your trusted intermediary for local deliveries. We hold payments securely until delivery is confirmed, ensuring both buyers and sellers are protected throughout the transaction process.</div>
+                </div>
+
+                <div class="type-item">
+                    <div class="type-label">Button Text</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: #0d4d7d;">Get Started Now</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand Icons -->
+        <div class="section">
+            <h2 class="section-title">Brand Icon System</h2>
+            <p style="margin-bottom: 2rem; color: #666;">Consistent iconography that reinforces trust and security.</p>
+            
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <div class="icon-display">🛡️</div>
+                    <div class="icon-name">Security</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📦</div>
+                    <div class="icon-name">Package</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">💰</div>
+                    <div class="icon-name">Payment</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">✓</div>
+                    <div class="icon-name">Verified</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📍</div>
+                    <div class="icon-name">Location</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🚚</div>
+                    <div class="icon-name">Delivery</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guidelines -->
+        <div class="section">
+            <h2 class="section-title">Logo Usage Guidelines</h2>
+            
+            <div class="do-dont-grid">
+                <div class="do-dont-card do">
+                    <div class="do-dont-header">✓ DO</div>
+                    <div class="do-dont-content">
+                        <div style="text-align: center;">
+                            <p style="margin-bottom: 1rem; font-weight: 600;">Use the two-color version on light backgrounds</p>
+                            <div style="font-size: 2.5rem; font-weight: 700; letter-spacing: -2px;">
+                                <span style="color: #0d4d7d;">Pay</span><span style="color: #1a7a4a;">Hold</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="do-dont-card dont">
+                    <div class="do-dont-header">✗ DON'T</div>
+                    <div class="do-dont-content">
+                        <div style="text-align: center;">
+                            <p style="margin-bottom: 1rem; font-weight: 600;">Don't use unapproved colors or effects</p>
+                            <div style="font-size: 2.5rem; font-weight: 700; letter-spacing: -2px; text-shadow: 0 0 10px red;">
+                                <span style="color: #ff0000;">Pay</span><span style="color: #ffff00;">Hold</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="do-dont-card do">
+                    <div class="do-dont-header">✓ DO</div>
+                    <div class="do-dont-content">
+                        <p style="text-align: center; font-weight: 600;">Maintain proper letter spacing<br>and proportions</p>
+                    </div>
+                </div>
+
+                <div class="do-dont-card dont">
+                    <div class="do-dont-header">✗ DON'T</div>
+                    <div class="do-dont-content">
+                        <p style="text-align: center; font-weight: 600;">Don't stretch, condense,<br>or skew the wordmark</p>
+                    </div>
+                </div>
+
+                <div class="do-dont-card do">
+                    <div class="do-dont-header">✓ DO</div>
+                    <div class="do-dont-content">
+                        <p style="text-align: center; font-weight: 600;">Use white version on dark or brand-colored backgrounds</p>
+                    </div>
+                </div>
+
+                <div class="do-dont-card dont">
+                    <div class="do-dont-header">✗ DON'T</div>
+                    <div class="do-dont-content">
+                        <p style="text-align: center; font-weight: 600;">Don't place on busy patterns or<br>low-contrast backgrounds</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="type-example" style="margin-top: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: #0d4d7d;">Typography Details:</h3>
+                <ul style="color: #666; margin-left: 1.5rem; line-height: 2;">
+                    <li><strong>Font Weight:</strong> Bold (700)</li>
+                    <li><strong>Letter Spacing:</strong> -3px for large sizes, -2px for medium, -1px for small</li>
+                    <li><strong>Minimum Size:</strong> 24px height for digital, 0.5 inches for print</li>
+                    <li><strong>Clear Space:</strong> Minimum half the height of the 'P' on all sides</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Brand Voice -->
+        <div class="section">
+            <h2 class="section-title">Brand Voice & Messaging</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div style="padding: 2rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #0d4d7d;">
+                    <h3 style="color: #0d4d7d; margin-bottom: 1rem;">Trustworthy</h3>
+                    <p style="color: #666;">We communicate with confidence and transparency, always prioritizing user security and peace of mind.</p>
+                </div>
+                
+                <div style="padding: 2rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #1a7a4a;">
+                    <h3 style="color: #1a7a4a; margin-bottom: 1rem;">Friendly</h3>
+                    <p style="color: #666;">Our tone is approachable and helpful, making complex transactions feel simple and stress-free.</p>
+                </div>
+                
+                <div style="padding: 2rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #0d4d7d;">
+                    <h3 style="color: #0d4d7d; margin-bottom: 1rem;">Professional</h3>
+                    <p style="color: #666;">We maintain professionalism in all communications while remaining accessible to everyone.</p>
+                </div>
+                
+                <div style="padding: 2rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #1a7a4a;">
+                    <h3 style="color: #1a7a4a; margin-bottom: 1rem;">Local</h3>
+                    <p style="color: #666;">We celebrate our community focus and emphasize the personal touch of local service.</p>
+                </div>
+            </div>
+
+            <div class="type-example" style="margin-top: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: #0d4d7d;">Key Messaging Points:</h3>
+                <ul style="color: #666; margin-left: 1.5rem; line-height: 2;">
+                    <li><strong>Security First:</strong> "Your payment stays protected until delivery is confirmed"</li>
+                    <li><strong>Local Trust:</strong> "Supporting safe transactions in your community"</li>
+                    <li><strong>Peace of Mind:</strong> "Buy and sell locally with complete confidence"</li>
+                    <li><strong>Simple Process:</strong> "Secure delivery made easy"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Applications -->
+        <div class="section">
+            <h2 class="section-title">Brand Applications</h2>
+            <p style="margin-bottom: 2rem; color: #666;">Examples of how the PayHold brand appears across different touchpoints.</p>
+            
+            <div style="display: grid; gap: 2rem;">
+                <!-- Business Card -->
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px;">
+                    <h3 style="margin-bottom: 1rem;">Business Card</h3>
+                    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 400px;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="font-size: 2.5rem; font-weight: 700; letter-spacing: -2px;">
+                                <span style="color: #0d4d7d;">Pay</span><span style="color: #1a7a4a;">Hold</span>
+                            </div>
+                            <div style="color: #666; font-size: 0.9rem; margin-top: 0.3rem;">Secure Local Delivery</div>
+                        </div>
+                        <div style="color: #666; font-size: 0.9rem;">
+                            <p><strong>John Doe</strong></p>
+                            <p>Business Development</p>
+                            <p>john@payhold.com</p>
+                            <p>+234 800 000 0000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App Icon -->
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px;">
+                    <h3 style="margin-bottom: 1rem;">Mobile App Icon</h3>
+                    <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                        <div style="width: 120px; height: 120px; border-radius: 26px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); background: linear-gradient(135deg, #0d4d7d 0%, #1a7a4a 100%); display: flex; align-items: center; justify-content: center;">
+                            <div style="color: white; font-weight: 700; font-size: 2.2rem; letter-spacing: -2px; text-align: center; line-height: 1;">
+                                <div>P</div>
+                                <div style="font-size: 1.5rem; margin-top: -0.2rem;">H</div>
+                            </div>
+                        </div>
+                        <div style="color: #666;">
+                            <p><strong>iOS & Android</strong></p>
+                            <p>1024x1024px recommended</p>
+                            <p>Rounded corners: 22.37%</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;"><em>Simple "PH" monogram on gradient</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px;">
+                    <h3 style="margin-bottom: 1rem;">Social Media Profile</h3>
+                    <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); background: white; display: flex; align-items: center; justify-content: center; border: 4px solid #0d4d7d;">
+                            <div style="font-weight: 700; font-size: 2rem; letter-spacing: -1px;">
+                                <span style="color: #0d4d7d;">Pay</span><span style="color: #1a7a4a;">Hold</span>
+                            </div>
+                        </div>
+                        <div style="color: #666;">
+                            <p><strong>Profile Picture</strong></p>
+                            <p>Square format: 500x500px+</p>
+                            <p>Circular crop with brand border</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Use PayHold Branding?</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9;">This brand identity guide ensures consistent and professional representation across all platforms.</p>
+        </div>
+    </div>
+</body>
+</html>

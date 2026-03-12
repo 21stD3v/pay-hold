@@ -1,0 +1,31 @@
+// prisma/schema.prisma
+// Add this to your existing schema (or use as the base)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  fullName     String   @map("full_name")
+  passwordHash String?  @map("password_hash") // null for Google-only users
+  googleId     String?  @unique @map("google_id")
+  image        String?
+  phone        String?
+  bvnVerified  Boolean  @default(false) @map("bvn_verified")
+  riskProfile  Int      @default(0) @map("risk_profile")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations (add as you build other features)
+  // deals        Deal[]
+  // disputes     Dispute[]
+
+  @@map("users")
+}

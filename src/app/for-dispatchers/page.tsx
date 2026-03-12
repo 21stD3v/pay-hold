@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Button from "@/components/ui/Button";
@@ -37,7 +38,6 @@ export default function DispatcherRegistrationPage() {
 					style={{ animationDelay: "1s" }}
 				></div>
 			</div>
-
 			{/* Navigation */}
 			<nav className='border-b border-gray-200 bg-white/95 backdrop-blur-md relative z-50'>
 				<div className='container mx-auto px-4 sm:px-6 lg:px-8'>
@@ -57,7 +57,7 @@ export default function DispatcherRegistrationPage() {
 					</div>
 				</div>
 			</nav>
-
+			c
 			<div className='container mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10'>
 				<div className='max-w-2xl mx-auto'>
 					{/* Header */}
