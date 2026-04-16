@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PayHold – Instagram Post Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0e6b72;
+    --teal-mid: #127e6e;
+    --green: #1a9b6c;
+    --lime: #b4ff6a;
+    --dark: #0a0f0d;
+    --offwhite: #f4f2ed;
+    --muted: #8a9a94;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d1210;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--offwhite);
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  h1.page-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--offwhite);
+    text-align: center;
+  }
+  h1.page-title span { color: var(--lime); }
+
+  /* ── POST WRAPPER ── */
+  .post-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 520px;
+  }
+  .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── INSTAGRAM POST CARD (1:1) ── */
+  .post-card {
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .post-card:hover { transform: scale(1.015); }
+
+  /* POST 1 – HERO */
+  .post-1 {
+    background: #041210;
+  }
+  .post-1 .bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(14,107,114,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14,107,114,0.12) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .post-1 .orb {
+    position: absolute;
+    width: 70%;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(14,107,114,0.55) 0%, rgba(26,155,108,0.25) 45%, transparent 70%);
+    bottom: -20%;
+    right: -20%;
+    border-radius: 50%;
+    filter: blur(2px);
+  }
+  .post-1 .orb2 {
+    position: absolute;
+    width: 40%;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(180,255,106,0.15) 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+    border-radius: 50%;
+    filter: blur(1px);
+  }
+  .post-1 .content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    height: 100%; padding: 8% 9%;
+  }
+  .post-1 .tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(180,255,106,0.12);
+    border: 1px solid rgba(180,255,106,0.3);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: clamp(0.55rem, 1.5vw, 0.72rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lime);
+    width: fit-content;
+  }
+  .post-1 .tag::before {
+    content:''; width: 6px; height: 6px;
+    background: var(--lime); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)}
+  }
+  .post-1 .headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 9vw, 4.4rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--offwhite);
+  }
+  .post-1 .headline em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--teal), var(--lime));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .post-1 .sub {
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    color: rgba(244,242,237,0.55);
+    line-height: 1.5;
+    max-width: 75%;
+  }
+  .post-1 .footer-row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .post-1 .brand {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .post-1 .brand span { color: var(--lime); }
+  .post-1 .logo-mark {
+    width: clamp(36px, 8vw, 54px);
+    height: clamp(36px, 8vw, 54px);
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    color: white;
+  }
+
+  /* POST 2 – HOW IT WORKS */
+  .post-2 { background: var(--offwhite); }
+  .post-2 .stripe {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 38%;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--green) 100%);
+  }
+  .post-2 .content {
+    position: relative; z-index: 2;
+    height: 100%; padding: 7% 8%;
+    display: flex; flex-direction: column; gap: 5%;
+  }
+  .post-2 .top-label {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .post-2 .top-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 5.5vw, 2.8rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: #fff; line-height: 1.05;
+  }
+  .post-2 .steps {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+    gap: clamp(8px, 2vw, 16px);
+  }
+  .post-2 .step {
+    display: flex; align-items: flex-start; gap: clamp(8px, 2vw, 14px);
+  }
+  .post-2 .step-num {
+    min-width: clamp(26px, 6vw, 36px);
+    height: clamp(26px, 6vw, 36px);
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: clamp(0.6rem, 1.8vw, 0.85rem);
+    color: white; flex-shrink: 0;
+  }
+  .post-2 .step-text strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; color: var(--dark);
+    font-size: clamp(0.7rem, 2vw, 0.95rem);
+    letter-spacing: -0.01em;
+  }
+  .post-2 .step-text span {
+    font-size: clamp(0.6rem, 1.6vw, 0.78rem);
+    color: #555; line-height: 1.4;
+  }
+  .post-2 .footer2 {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .post-2 .brand2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    color: var(--teal); letter-spacing: -0.02em;
+  }
+  .post-2 .handle {
+    font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+    color: var(--muted); letter-spacing: 0.05em;
+  }
+
+  /* POST 3 – STAT/TRUST */
+  .post-3 {
+    background: linear-gradient(160deg, #051a14 0%, #0a2a1e 40%, #0e3830 100%);
+  }
+  .post-3 .noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .post-3 .content {
+    position: relative; z-index: 2;
+    height: 100%; padding: 8% 9%;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .post-3 .badge {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(0.55rem, 1.5vw, 0.68rem);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--lime);
+  }
+  .post-3 .big-stat {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(4rem, 16vw, 9rem);
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+    background: linear-gradient(135deg, var(--lime) 0%, #7eefc0 60%, #2dd6c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .post-3 .stat-label {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1rem, 3.5vw, 1.8rem);
+    font-weight: 700; color: var(--offwhite);
+    letter-spacing: -0.02em; line-height: 1.2;
+  }
+  .post-3 .stat-sub {
+    font-size: clamp(0.65rem, 1.8vw, 0.85rem);
+    color: rgba(244,242,237,0.45);
+    max-width: 70%; line-height: 1.5;
+  }
+  .post-3 .footer3 {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .post-3 .brand3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    color: var(--offwhite); letter-spacing: -0.02em;
+  }
+  .post-3 .brand3 span { color: var(--lime); }
+  .post-3 .cta-pill {
+    background: var(--lime);
+    color: var(--dark);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(0.55rem, 1.5vw, 0.72rem);
+    letter-spacing: 0.05em;
+    padding: 6px 14px; border-radius: 100px;
+  }
+
+  /* ── CONTENT IDEAS ── */
+  .ideas-grid {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .idea-card {
+    background: #111a16;
+    border: 1px solid rgba(14,107,114,0.25);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .idea-card:hover {
+    border-color: var(--lime);
+    transform: translateY(-3px);
+  }
+  .idea-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--lime);
+  }
+  .idea-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: -0.02em; color: var(--offwhite);
+    line-height: 1.2;
+  }
+  .idea-body {
+    font-size: 0.82rem; color: rgba(244,242,237,0.5);
+    line-height: 1.6;
+  }
+  .idea-hook {
+    font-size: 0.78rem;
+    color: var(--lime);
+    border-left: 2px solid var(--lime);
+    padding-left: 10px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    color: var(--offwhite);
+    width: 100%; max-width: 900px;
+  }
+  .section-title span { color: var(--lime); }
+
+  .caption-box {
+    width: 100%; max-width: 520px;
+    background: #111a16;
+    border: 1px solid rgba(14,107,114,0.3);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .caption-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .caption-text {
+    font-size: 0.85rem; color: rgba(244,242,237,0.75);
+    line-height: 1.7; white-space: pre-line;
+  }
+  .caption-text strong { color: var(--lime); }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">PayHold — <span>Instagram Creative</span></h1>
+
+<!-- POST 1: HERO -->
+<div class="post-section">
+  <div class="label">Post 01 — Brand Hero</div>
+  <div class="post-card post-1">
+    <div class="bg-grid"></div>
+    <div class="orb"></div>
+    <div class="orb2"></div>
+    <div class="content">
+      <div class="tag">Escrow · Deal Management</div>
+      <div>
+        <div class="headline">Send money.<br>Stay in <em>control.</em></div>
+        <div class="sub" style="margin-top:3%">PayHold keeps your funds secure until every condition of your deal is met. Zero risk. Full trust.</div>
+      </div>
+      <div class="footer-row">
+        <div class="brand">Pay<span>Hold</span></div>
+        <div class="logo-mark">PH</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Suggested Caption</div>
+    <div class="caption-text">Sending money should feel safe — not like a gamble. 🔒
+
+<strong>PayHold</strong> holds your funds in escrow until your deal is complete. Buyer protected. Seller confident.
+
+This is how Nigerian business gets done — with trust built in.
+
+<strong>👉 Link in bio to start your first deal free.</strong>
+
+<strong>#PayHold #NigerianFintech #EscrowNigeria #SafePayments #BuildingNigeria #Fintech</strong></div>
+  </div>
+</div>
+
+<!-- POST 2: HOW IT WORKS -->
+<div class="post-section">
+  <div class="label">Post 02 — How It Works</div>
+  <div class="post-card post-2">
+    <div class="stripe"></div>
+    <div class="content">
+      <div>
+        <div class="top-label">Simple · Secure · Smart</div>
+        <div class="top-headline">How<br>PayHold<br>Works</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Create a Deal</strong>
+            <span>Buyer & seller agree on terms. PayHold locks the payment.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Funds Held in Escrow</strong>
+            <span>Money is secured — neither party can touch it until conditions are met.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Confirm & Release</strong>
+            <span>Buyer confirms delivery. Funds release to the seller instantly.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Dispute? We've Got You</strong>
+            <span>Built-in resolution for any deal gone sideways.</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer2">
+        <div class="brand2">PayHold</div>
+        <div class="handle">payhold.ng</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Suggested Caption</div>
+    <div class="caption-text">Tired of "send first, trust me" deals? 😤
+
+Here's how <strong>PayHold</strong> protects every transaction in 4 simple steps:
+
+1️⃣ Create the deal
+2️⃣ Funds get locked in escrow
+3️⃣ Confirm delivery
+4️⃣ Money releases — done.
+
+No more lost money. No more blind trust.
+
+<strong>Start a deal today 👇 Link in bio.</strong>
+
+<strong>#Escrow #PayHold #OnlineBusinessNigeria #SafeTrade #Fintech</strong></div>
+  </div>
+</div>
+
+<!-- POST 3: STAT / TRUST -->
+<div class="post-section">
+  <div class="label">Post 03 — Trust Statement</div>
+  <div class="post-card post-3">
+    <div class="noise"></div>
+    <div class="content">
+      <div class="badge">PayHold — Built for Trust</div>
+      <div>
+        <div class="big-stat">₦0</div>
+        <div class="stat-label">Lost to bad deals<br>when you use PayHold.</div>
+        <div class="stat-sub" style="margin-top:4%">Every naira you send is protected by escrow until your deal is confirmed. We hold it, so you don't have to worry.</div>
+      </div>
+      <div class="footer3">
+        <div class="brand3">Pay<span>Hold</span></div>
+        <div class="cta-pill">Start Free →</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Suggested Caption</div>
+    <div class="caption-text">₦0 lost when you use escrow. 🛡️
+
+The number one reason deals go wrong in Nigeria? Blind trust.
+
+<strong>PayHold</strong> removes the risk completely. Your money moves only when YOUR conditions are met.
+
+No excuses. No delays. No fraud.
+
+<strong>Comment "SAFE" and we'll send you the link to get started. 👇</strong>
+
+<strong>#PayHold #EscrowNigeria #NaijaFintech #SafeOnlineShopping #Fraud</strong></div>
+  </div>
+</div>
+
+<!-- CONTENT IDEAS -->
+<div class="section-title">Content <span>Ideas</span> — Campaign Series</div>
+<div class="ideas-grid">
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 01</div>
+    <div class="idea-title">The "You've Been Scammed" Storytime</div>
+    <div class="idea-body">Relatable story format — open with a common scam scenario (Instagram vendor, freelancer ghosting, car deal gone wrong). End with how PayHold would have prevented it.</div>
+    <div class="idea-hook">"She sent ₦150k. He blocked her. This is what escrow is for."</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 02</div>
+    <div class="idea-title">Vendor vs. Buyer Trust Series</div>
+    <div class="idea-body">Two-sided perspective posts — one day post from a buyer's fear ("What if I send and they don't deliver?"), next day from a seller ("What if they don't pay after I ship?"). PayHold solves both.</div>
+    <div class="idea-hook">"Both sides win. That's the deal."</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 03</div>
+    <div class="idea-title">Use Case Carousel</div>
+    <div class="idea-body">Slide-by-slide carousel showing all the deals you can protect: freelance work, car purchases, real estate deposits, vendor payments, event bookings, Jiji/WhatsApp sales.</div>
+    <div class="idea-hook">"If money changes hands — PayHold should be in the middle."</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 04</div>
+    <div class="idea-title">"Build in Public" Founder Posts</div>
+    <div class="idea-body">Behind-the-scenes content about building PayHold — why it was created, the problem you experienced personally, the tech stack, milestones. Builds trust and authenticity.</div>
+    <div class="idea-hook">"I built PayHold because I got burned too."</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 05</div>
+    <div class="idea-title">Myth-Busting Reels / Posts</div>
+    <div class="idea-body">Short punchy posts busting myths: "Escrow is only for big deals" / "It's complicated" / "It costs too much" — followed by the truth about PayHold's simplicity.</div>
+    <div class="idea-hook">"Myth: Escrow is for corporates only. Truth: ₦5k deal? Still protected."</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 06</div>
+    <div class="idea-title">Testimonial / Social Proof</div>
+    <div class="idea-body">Quote-style posts from early users or beta testers. Clean card design with a quote about the confidence PayHold gave them on a deal. Strong trust signal for new visitors.</div>
+    <div class="idea-hook">"I finally felt safe buying from a stranger online."</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 07</div>
+    <div class="idea-title">Before/After Comparison</div>
+    <div class="idea-body">Split-screen posts: left side shows a stressful unsafe deal, right side shows the same deal done through PayHold. Visual simplicity, strong contrast storytelling.</div>
+    <div class="idea-hook">"Same deal. Different outcome. Escrow changes everything."</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 08</div>
+    <div class="idea-title">Weekly "Deal of the Week"</div>
+    <div class="idea-body">Highlight a type of real-world deal that could be protected each week (this week: car deposits; next week: freelance design projects). Keeps content fresh and specific.</div>
+    <div class="idea-hook">"This week we're protecting your car deposit. 🚗"</div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-num">Idea 09</div>
+    <div class="idea-title">Interactive Poll / Question Posts</div>
+    <div class="idea-body">Engagement-first posts: "Have you ever been scammed buying online? 🙋‍♂️" / "What's the biggest deal you've done without protection?" — drives comments and visibility.</div>
+    <div class="idea-hook">"Drop the ₦ amount in the comments. We won't judge. 👀"</div>
+  </div>
+
+</div>
+
+</body>
+</html>

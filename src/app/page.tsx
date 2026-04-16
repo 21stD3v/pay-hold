@@ -290,7 +290,11 @@ export default function HomePage() {
 							How PayHold Works
 						</h2>
 						<p className='text-xl text-gray-600 max-w-2xl mx-auto'>
-							Four simple steps to secure, worry-free transactions
+							Four simple steps to secure, worry-freetransactions.
+							<br />
+							<a href='/how-it-works' className='text-re-700'>
+								click for complete process..
+							</a>
 						</p>
 					</div>
 
