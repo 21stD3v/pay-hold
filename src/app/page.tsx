@@ -4,10 +4,8 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useState } from "react";
 
-// ============================================================================
 // PAYHOLD LANDING PAGE - Professional Redesign
 // Brand Colors: #0d4d7d (Deep Blue) + #1a7a4a (Trust Green)
-// ============================================================================
 
 export default function HomePage() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -99,11 +97,11 @@ export default function HomePage() {
 
 				{/* Mobile Menu Panel */}
 				<div
-					className={`fixed top-0 right-0 bottom-0 w-[280px] bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-out lg:hidden ${
+					className={`fixed top-0 right-0 bottom-0 w-[280px] bg-transparent z-50 shadow-2xl transform transition-transform duration-300 ease-out lg:hidden ${
 						menuOpen ? "translate-x-0" : "translate-x-full"
 					}`}
 				>
-					<div className='flex items-center justify-between p-6 border-b'>
+					<div className='flex items-center justify-between p-6 border-b bg-transparent'>
 						<div className='text-2xl font-bold'>
 							<span className='text-[#0d4d7d]'>Pay</span>
 							<span className='text-[#1a7a4a]'>Hold</span>
@@ -130,7 +128,7 @@ export default function HomePage() {
 						</button>
 					</div>
 
-					<nav className='p-6 space-y-4'>
+					<nav className='p-6 space-y-4 bg-white h-full flex flex-col justify-between'>
 						<Link
 							href='/how-it-works'
 							onClick={() => setMenuOpen(false)}
@@ -138,20 +136,7 @@ export default function HomePage() {
 						>
 							How It Works
 						</Link>
-						<Link
-							href='/for-dispatchers'
-							onClick={() => setMenuOpen(false)}
-							className='block text-gray-700 hover:text-[#1a7a4a] font-medium py-2 transition-colors'
-						>
-							For Dispatchers
-						</Link>
-						<Link
-							href='/contact'
-							onClick={() => setMenuOpen(false)}
-							className='block text-gray-700 hover:text-[#0d4d7d] font-medium py-2 transition-colors'
-						>
-							Contact
-						</Link>
+
 						<Link href='/create-transaction' onClick={() => setMenuOpen(false)}>
 							<Button
 								type='button'
