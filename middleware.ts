@@ -1,36 +1,56 @@
+// middleware.ts  (project root — same level as app/)
 import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 
-// ─── Protected route patterns ─────────────────────────────────────────────────
-// Any route under /dashboard, /deals, /profile, /settings requires auth.
-// Public routes (/, /login, /register, /how-it-works, etc.) are left open.
-
 export default withAuth(
 	function middleware(req) {
-		// Additional middleware logic can go here if needed
-		// e.g. role-based redirects, locale handling
+		// If authenticated user hits /auth/login → redirect to dashboard
+		if (req.nextUrl.pathname.startsWith("/auth/login") && req.nextauth.token) {
+			return NextResponse.redirect(new URL("/dashboard", req.url));
+		}
 		return NextResponse.next();
 	},
 	{
 		callbacks: {
-			authorized({ token }) {
-				// Return true if user has a valid session token
+			// Return true = allow through. Return false = redirect to login.
+			authorized({ req, token }) {
+				const { pathname } = req.nextUrl;
+
+				// Public routes — always allow
+				const publicPaths = [
+					"/",
+					"/auth/login",
+					"/auth/register",
+					"/auth/forgot-password",
+					"/api/payments/webhook", // Paystack webhook must be public
+					"/how-it-works",
+					"/real-estate",
+					"/for-sellers",
+					"/pricing",
+					"/contact",
+				];
+
+				const isPublic =
+					publicPaths.some(
+						(p) => pathname === p || pathname.startsWith(p + "/"),
+					) ||
+					pathname.startsWith("/api/auth") || // NextAuth API routes
+					pathname.startsWith("/_next") ||
+					pathname.startsWith("/favicon");
+
+				if (isPublic) return true;
+
+				// Everything else requires a token
 				return !!token;
 			},
 		},
 		pages: {
-			signIn: "/login",
+			signIn: "/auth/login",
 		},
 	},
 );
 
-// ─── Route matcher ────────────────────────────────────────────────────────────
+// Match all routes except static files
 export const config = {
-	matcher: [
-		"/dashboard/:path*",
-		"/deals/:path*",
-		"/profile/:path*",
-		"/settings/:path*",
-		"/create-transaction/:path*",
-	],
+	matcher: ["/((?!_next/static|_next/image|favicon.ico|images|icons|fonts).*)"],
 };
