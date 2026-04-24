@@ -31,7 +31,7 @@ const services = [
 		borderActive: "#0d4d7d",
 		comingSoon: false,
 		icon: (
-			<svg viewBox='0 0 32 32' fill='none' className='w-8 h-8'>
+			<svg viewBox='0 0 32 32' fill='none' className='w-6 h-6 sm:w-8 sm:h-8'>
 				<path
 					d='M4 8h24v16a2 2 0 01-2 2H6a2 2 0 01-2-2V8z'
 					stroke='#0d4d7d'
@@ -81,7 +81,7 @@ const services = [
 		borderActive: "#c9a84c",
 		comingSoon: false,
 		icon: (
-			<svg viewBox='0 0 32 32' fill='none' className='w-8 h-8'>
+			<svg viewBox='0 0 32 32' fill='none' className='w-6 h-6 sm:w-8 sm:h-8'>
 				<path
 					d='M3 14L16 4l13 10v14a1 1 0 01-1 1H4a1 1 0 01-1-1V14z'
 					stroke='#92400e'
@@ -151,31 +151,31 @@ export default function ServiceSelectPage() {
 			</div>
 
 			{/* ── Nav ── */}
-			<nav className='relative z-10 flex items-center justify-between px-6 md:px-12 py-6 border-b border-[#111]'>
-				<div className='font-serif text-xl tracking-tight'>
+			<nav className='relative z-10 flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 sm:py-6 border-b border-[#111]'>
+				<div className='font-serif text-lg sm:text-xl tracking-tight'>
 					<span className='text-[#e8e8e0]'>Pay</span>
 					<span className='text-[#444] italic'>Hold</span>
 				</div>
-				<div className='flex items-center gap-3'>
-					<div className='w-7 h-7 rounded-full bg-gradient-to-br from-[#0d4d7d] to-[#1a7a4a] flex items-center justify-center text-white text-xs font-bold'>
+				<div className='flex items-center gap-2 sm:gap-3'>
+					<div className='w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-[#0d4d7d] to-[#1a7a4a] flex items-center justify-center text-white text-xs font-bold'>
 						{firstName[0]?.toUpperCase()}
 					</div>
-					<span className='text-[#555] text-sm font-light hidden sm:block'>
+					<span className='text-[#555] text-xs sm:text-sm font-light hidden sm:block'>
 						{session?.user?.email}
 					</span>
 				</div>
 			</nav>
 
 			{/* ── Hero copy ── */}
-			<div className='relative z-10 text-center pt-16 pb-12 px-6'>
-				<div className='inline-flex items-center gap-2 border border-[#1c1c1c] rounded-full px-4 py-1.5 mb-8'>
+			<div className='relative z-10 text-center pt-8 sm:pt-16 pb-6 sm:pb-12 px-4 sm:px-6'>
+				<div className='inline-flex items-center gap-2 border border-[#1c1c1c] rounded-full px-3 sm:px-4 py-1 sm:py-1.5 mb-5 sm:mb-8'>
 					<div className='w-1.5 h-1.5 rounded-full bg-[#1a7a4a] animate-pulse' />
-					<span className='text-[#555] text-xs font-mono tracking-widest uppercase'>
+					<span className='text-[#555] text-[10px] sm:text-xs font-mono tracking-widest uppercase'>
 						Welcome back, {firstName}
 					</span>
 				</div>
 
-				<h1 className='text-4xl md:text-5xl lg:text-6xl font-serif text-[#e8e8e0] leading-[1.08] tracking-tight mb-5'>
+				<h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#e8e8e0] leading-[1.08] tracking-tight mb-3 sm:mb-5'>
 					What are you
 					<br />
 					<em
@@ -186,15 +186,15 @@ export default function ServiceSelectPage() {
 					</em>{" "}
 					today?
 				</h1>
-				<p className='text-[#444] text-base md:text-lg font-light max-w-md mx-auto leading-relaxed'>
+				<p className='text-[#444] text-sm sm:text-base md:text-lg font-light max-w-md mx-auto leading-relaxed'>
 					Choose your service. PayHold is the trust layer — whatever you&apos;re
 					moving, we protect it.
 				</p>
 			</div>
 
 			{/* ── Service cards ── */}
-			<div className='relative z-10 flex-1 flex items-start justify-center px-4 sm:px-6 pb-16'>
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-4xl'>
+			<div className='relative z-10 flex-1 flex items-start justify-center px-3 sm:px-4 md:px-6 pb-10 sm:pb-16'>
+				<div className='grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 w-full max-w-4xl'>
 					{services.map((service, i) => {
 						const isHovered = hovering === service.id;
 						const isSelected = selected === service.id;
@@ -207,7 +207,7 @@ export default function ServiceSelectPage() {
 								onMouseEnter={() => setHovering(service.id)}
 								onMouseLeave={() => setHovering(null)}
 								disabled={isComingSoon || navigating}
-								className='text-left group relative rounded-2xl border transition-all duration-300 overflow-hidden'
+								className='text-left group relative rounded-xl sm:rounded-2xl border transition-all duration-300 overflow-hidden'
 								style={{
 									background: isHovered ? "#0d0d0d" : "#090909",
 									borderColor: isSelected
@@ -239,18 +239,18 @@ export default function ServiceSelectPage() {
 								{/* Glow */}
 								{isHovered && (
 									<div
-										className='absolute inset-0 pointer-events-none rounded-2xl'
+										className='absolute inset-0 pointer-events-none rounded-xl sm:rounded-2xl'
 										style={{
 											background: `radial-gradient(ellipse at 30% 0%, ${service.accentGlow}, transparent 70%)`,
 										}}
 									/>
 								)}
 
-								<div className='relative p-7 md:p-8'>
+								<div className='relative p-4 sm:p-6 md:p-8'>
 									{/* Header */}
-									<div className='flex items-start justify-between mb-6'>
+									<div className='flex items-start justify-between mb-4 sm:mb-6'>
 										<div
-											className='w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-300'
+											className='w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl flex items-center justify-center transition-transform duration-300'
 											style={{
 												background: isHovered
 													? `${service.accentColor}18`
@@ -261,7 +261,7 @@ export default function ServiceSelectPage() {
 											{service.icon}
 										</div>
 										<span
-											className='text-[10px] font-mono font-semibold tracking-widest px-2.5 py-1 rounded-full border'
+											className='text-[9px] sm:text-[10px] font-mono font-semibold tracking-widest px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border'
 											style={{
 												color: service.tagColor,
 												borderColor: `${service.tagColor}40`,
@@ -274,43 +274,46 @@ export default function ServiceSelectPage() {
 
 									{/* Title */}
 									<div className='mb-1'>
-										<span className='text-[10px] font-mono text-[#333] tracking-[0.16em] uppercase'>
+										<span className='text-[9px] sm:text-[10px] font-mono text-[#333] tracking-[0.16em] uppercase'>
 											{service.label}
 										</span>
 									</div>
-									<h2 className='text-xl md:text-2xl font-serif text-[#e8e8e0] leading-tight mb-3 tracking-tight'>
+									<h2 className='text-lg sm:text-xl md:text-2xl font-serif text-[#e8e8e0] leading-tight mb-2 sm:mb-3 tracking-tight'>
 										{service.headline}
 									</h2>
-									<p className='text-[#444] text-sm font-light leading-relaxed mb-7'>
+									<p className='text-[#444] text-xs sm:text-sm font-light leading-relaxed mb-4 sm:mb-7'>
 										{service.sub}
 									</p>
 
 									{/* Stats */}
-									<div className='grid grid-cols-3 gap-3 mb-7 pb-7 border-b border-[#141414]'>
+									<div className='grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-7 pb-4 sm:pb-7 border-b border-[#141414]'>
 										{service.stats.map((stat) => (
 											<div key={stat.label}>
 												<div
-													className='text-lg font-serif font-semibold tracking-tight'
+													className='text-base sm:text-lg font-serif font-semibold tracking-tight'
 													style={{ color: service.accentColor }}
 												>
 													{stat.value}
 												</div>
-												<div className='text-[10px] text-[#333] font-mono uppercase tracking-wider mt-0.5'>
+												<div className='text-[9px] sm:text-[10px] text-[#333] font-mono uppercase tracking-wider mt-0.5'>
 													{stat.label}
 												</div>
 											</div>
 										))}
 									</div>
 
-									{/* Features */}
-									<div className='grid grid-cols-2 gap-y-2 gap-x-4 mb-8'>
+									{/* Features — 2-col on mobile too, just smaller text */}
+									<div className='grid grid-cols-2 gap-y-1.5 sm:gap-y-2 gap-x-3 sm:gap-x-4 mb-4 sm:mb-8'>
 										{service.features.map((f) => (
-											<div key={f} className='flex items-center gap-2'>
+											<div
+												key={f}
+												className='flex items-center gap-1.5 sm:gap-2'
+											>
 												<div
 													className='w-1 h-1 rounded-full flex-shrink-0'
 													style={{ background: service.accentColor }}
 												/>
-												<span className='text-[11px] text-[#3a3a3a] font-light'>
+												<span className='text-[10px] sm:text-[11px] text-[#3a3a3a] font-light'>
 													{f}
 												</span>
 											</div>
@@ -319,14 +322,14 @@ export default function ServiceSelectPage() {
 
 									{/* CTA */}
 									<div
-										className='flex items-center justify-between rounded-xl px-5 py-3.5 transition-all duration-300'
+										className='flex items-center justify-between rounded-lg sm:rounded-xl px-3.5 sm:px-5 py-2.5 sm:py-3.5 transition-all duration-300'
 										style={{
 											background: isHovered ? service.accentColor : "#111",
 											border: `1px solid ${isHovered ? "transparent" : "#1c1c1c"}`,
 										}}
 									>
 										<span
-											className='text-sm font-medium tracking-wide transition-colors duration-300'
+											className='text-xs sm:text-sm font-medium tracking-wide transition-colors duration-300'
 											style={{
 												color: isHovered ? "#fff" : "#3a3a3a",
 											}}
@@ -340,7 +343,7 @@ export default function ServiceSelectPage() {
 										<svg
 											viewBox='0 0 16 16'
 											fill='none'
-											className='w-4 h-4 transition-all duration-300'
+											className='w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-300'
 											style={{
 												stroke: isHovered ? "#fff" : "#3a3a3a",
 												transform: isHovered
@@ -364,7 +367,7 @@ export default function ServiceSelectPage() {
 			</div>
 
 			{/* ── Footer ── */}
-			<div className='relative z-10 text-center pb-8 px-6'>
+			<div className='relative z-10 text-center pb-6 sm:pb-8 px-6'>
 				<p className='text-[#222] text-xs font-mono tracking-widest uppercase'>
 					PayHold · Trust Infrastructure for African Commerce
 				</p>

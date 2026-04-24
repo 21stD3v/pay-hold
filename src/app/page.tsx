@@ -323,7 +323,7 @@ export default function HomePage() {
 							<Link href='/selected-services'>
 								<Button
 									size='md'
-									className='bg-gradient-to-r from-[#000000] to-[#d19c0b] hover:shadow-lg hover:scale-105 transition-all duration-300'
+									className='bg-gradient-to-r from-[#000000] to-[#000000] hover:shadow-lg hover:scale-105 transition-all duration-300'
 								>
 									Property Management
 								</Button>
