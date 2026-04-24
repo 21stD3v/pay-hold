@@ -677,12 +677,6 @@ export default function PropertyPage() {
 					<span className='text-[#444] italic'>Hold</span>
 				</Link>
 				<div className='flex items-center gap-3'>
-					<Link
-						href='/services'
-						className='text-[#333] text-xs font-mono tracking-widest uppercase hover:text-[#555] transition-colors'
-					>
-						← All Services
-					</Link>
 					<div className='w-px h-4 bg-[#1a1a1a]' />
 					<Link href='/login'>
 						<button className='text-xs font-mono tracking-widest uppercase px-4 py-2 rounded-lg border border-[#1c1c1c] text-[#444] hover:border-[#0d4d7d] hover:text-[#0d4d7d] transition-all duration-200'>
