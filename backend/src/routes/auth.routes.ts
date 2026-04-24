@@ -44,9 +44,9 @@ const loginSchema = z.object({
 
 const googleSchema = z.object({
 	email: z.string().email(),
-	name: z.string(),
-	image: z.string().url().optional(),
-	googleId: z.string(),
+	name: z.string().min(1),
+	image: z.string().url().nullable().optional(),
+	googleId: z.string().min(1),
 });
 
 // ─── POST /api/v1/auth/register ───────────────────────────────────────────────

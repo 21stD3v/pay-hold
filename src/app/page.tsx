@@ -305,12 +305,7 @@ export default function HomePage() {
 							>
 								How It Works
 							</Link>
-							<Link
-								href='/for-dispatchers'
-								className='text-gray-700 hover:text-[#1a7a4a] font-medium transition-all duration-200 hover:translate-y-[-1px]'
-							>
-								For Dispatchers
-							</Link>
+
 							<Link
 								href='/contact'
 								className='text-gray-700 hover:text-[#0d4d7d] font-medium transition-all duration-200 hover:translate-y-[-1px]'
@@ -704,7 +699,7 @@ export default function HomePage() {
 											Dial to Activate
 										</p>
 										<div className='text-6xl md:text-7xl font-bold mb-4 tracking-wider'>
-											*565#
+											*432#
 										</div>
 										<p className='text-white/80'>
 											Available for bike and car dispatchers
@@ -812,7 +807,7 @@ export default function HomePage() {
 							</p>
 							<div className='flex gap-4'>
 								<a
-									href='https://x.com/casualcravehq'
+									href='https://x.com/payholdhq'
 									className='w-10 h-10 bg-gray-800 hover:bg-[#0d4d7d] rounded-lg flex items-center justify-center transition-colors'
 								>
 									<svg
@@ -824,7 +819,7 @@ export default function HomePage() {
 									</svg>
 								</a>
 								<a
-									href='https://www.instagram.com/casualcrave/'
+									href='https://www.instagram.com/payholdhq/'
 									className='w-10 h-10 bg-gray-800 hover:bg-[#7d0f0079] rounded-lg flex items-center justify-center transition-colors'
 								>
 									<svg
