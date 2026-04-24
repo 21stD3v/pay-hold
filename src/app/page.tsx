@@ -320,13 +320,21 @@ export default function HomePage() {
 									Create Transaction
 								</Button>
 							</Link>
+							<Link href='/selected-services'>
+								<Button
+									size='md'
+									className='bg-gradient-to-r from-[#000000] to-[#d19c0b] hover:shadow-lg hover:scale-105 transition-all duration-300'
+								>
+									Property Management
+								</Button>
+							</Link>
 							<Link href='/login'>
 								<Button
 									variant='outline'
 									size='md'
 									className='border-[#0d4d7d] text-[#0d4d7d] hover:bg-[#0d4d7d] hover:text-white transition-all duration-300'
 								>
-									Register
+									Log In
 								</Button>
 							</Link>
 						</div>
@@ -411,6 +419,14 @@ export default function HomePage() {
 								className='w-full bg-gradient-to-r from-[#0d4d7d] to-[#1a7a4a]'
 							>
 								Create Transaction
+							</Button>
+						</Link>
+						<Link href='/selected-services' onClick={() => setMenuOpen(false)}>
+							<Button
+								type='button'
+								className='w-full bg-gradient-to-r from-[#000000] to-[#5e4a08]'
+							>
+								Property Management
 							</Button>
 						</Link>
 						<div className='pt-4 space-y-3'>
